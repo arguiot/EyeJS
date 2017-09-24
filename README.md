@@ -10,7 +10,7 @@ By the way, you can ⭐️ the project to support it 😊
 [![GitHub release](https://img.shields.io/github/release/arguiot/EyeJS.svg)](https://github.com/arguiot/EyeJS/releases)
 [![Build Status](https://travis-ci.org/arguiot/EyeJS.svg?branch=master)](https://travis-ci.org/arguiot/EyeJS)
 [![Github All Releases](https://img.shields.io/github/downloads/arguiot/EyeJS/total.svg)](https://github.com/arguiot/EyeJS/)
-[![npm](https://img.shields.io/npm/dt/display.js.svg)](https://www.npmjs.com/package/display.js)
+[![npm](https://img.shields.io/npm/dt/eye.js.svg)](https://www.npmjs.com/package/eye.js)
 [![License](https://img.shields.io/github/license/arguiot/EyeJS.svg)](LICENSE)
 
 </p>
