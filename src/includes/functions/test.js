@@ -1,5 +1,9 @@
-test(name, type="node", callback) {
+test(name, type="node") {
 	this.data.tested += 1;
 	const spinner = ora(name).start();
-	return type == "browser" ? this.browser(name, callback, spinner) : this.node(name, callback, spinner);
+	let callbacks = [];
+	for (var i = 0; i < arguments.length - 2; i++) {
+		callbacks.push(arguments[i + 2])
+	}
+	return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
 }

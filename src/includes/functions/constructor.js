@@ -23,4 +23,16 @@ constructor() {
 			process.exit(1);
 		}
 	});
+
+	this.case = $ => {
+		class expect {
+			constructor(val) {
+				this.val = val
+			}
+			equal(val) {
+				return val === this.val ? true : false
+			}
+		}
+		return new expect($)
+	}
 }

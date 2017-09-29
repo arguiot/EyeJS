@@ -2,17 +2,6 @@ const ora = require('ora');
 const colors = require('colors');
 
 class EyeJS {
-	get case() {
-		class expect {
-			constructor(val) {
-				this.val = val;
-			}
-			toBe(val) {
-				return val === this.val ? true : false;
-			}
-		}
-		return new expect;
-	}
 	constructor() {
 		console.log();
 		this.data = {
@@ -38,11 +27,30 @@ class EyeJS {
 				process.exit(1);
 			}
 		});
+	
+		this.case = $ => {
+			class expect {
+				constructor(val) {
+					this.val = val
+				}
+				equal(val) {
+					return val === this.val ? true : false
+				}
+			}
+			return new expect($)
+		}
 	}
-	node(name, callback, spinner) {
-		this.temp = true;
+	node(name, spinner, callbacks) {
 		const $ = this.case;
-		const result = callback($);
+		let result = !0;
+		for (let i in callbacks) {
+			const temp = i($)
+			if (temp == !1) {
+				result = result == !0 || result == !1 ? false : result
+			} else if (temp != !1 && temp != !0) {
+				result = temp
+			}
+		}
 		if (result == !1) {
 			spinner.fail();
 			this.data.failed += 1;
@@ -54,10 +62,14 @@ class EyeJS {
 			spinner.warn()
 		}
 	}
-	test(name, type="node", callback) {
+	test(name, type="node") {
 		this.data.tested += 1;
 		const spinner = ora(name).start();
-		return type == "browser" ? this.browser(name, callback, spinner) : this.node(name, callback, spinner);
+		let callbacks = [];
+		for (var i = 0; i < arguments.length - 2; i++) {
+			callbacks.push(arguments[i + 2])
+		}
+		return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
 	}
 	updateTemp(val) {
 		this.temp = val;
