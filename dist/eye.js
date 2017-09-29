@@ -22,7 +22,7 @@ class EyeJS {
 			}
 			else {
 				console.log("\n");
-				console.log("✖ Oups!, There is problem somewhere!".red);
+				console.log(`✖ Oups!, There is problem somewhere! Exited with ${code}`.red);
 				process.exit(1);
 			}
 		});
