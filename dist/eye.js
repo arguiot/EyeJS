@@ -8,7 +8,6 @@ class EyeJS {
 			"tested": 0,
 			"failed": 0
 		};
-		this.temp = true;
 		this.time = process.hrtime();
 		process.on("exit", (code) => {
 			if (code == 0) {
@@ -70,9 +69,6 @@ class EyeJS {
 			callbacks.push(arguments[i + 2])
 		}
 		return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
-	}
-	updateTemp(val) {
-		this.temp = val;
 	}
 }
 // Browserify / Node.js
