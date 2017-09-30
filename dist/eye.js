@@ -1,7 +1,48 @@
+/*
+**   © Arthur Guiot 2017
+**         EyeJS
+**       eye.js.org
+*/
+
+
+// Require all modules
 const ora = require('ora');
 const colors = require('colors');
+const http = require('http');
+const open = require('openurl');
+const fs = require('fs');
 
+// Class EyeJS
 class EyeJS {
+	browser(name, spinner, file) {
+		//create a server object:
+		http.createServer((req, res) => {
+			const chunks = [];
+			request.on('data', chunk => chunks.push(chunk));
+			request.on('end', () => {
+				const data = JSON.parse(Buffer.concat(chunks));
+				const result = data.status;
+				const failed = data.failed;
+				if (result == !1) {
+					spinner.fail();
+					this.data.failed += 1;
+					console.log(`\nTest ${failed} failed\n`)
+				}
+				else if (result == !0) {
+					spinner.succeed()
+				}
+				else {
+					spinner.warn()
+				}
+			});
+			fs.readFile(file, (err, data) => {
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.write(data)
+				res.end()
+			}
+		}).listen(8080); //the server object listens on port 8080
+		open.open("http://localhost:8080")
+	}
 	constructor() {
 		console.log();
 		this.data = {
@@ -26,26 +67,29 @@ class EyeJS {
 				process.exit(1);
 			}
 		});
-	
-		this.case = $ => {
+	}
+	node(name, spinner, callbacks) {
+		const $ = $ => {
 			class expect {
 				constructor(val) {
 					this.val = val
 				}
-				equal(val) {
-					return val === this.val ? true : false
+				Equal(val) {
+					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false
+				}
+				Match(val) {
+					return val.test(this.val) == true ? true : false
 				}
 			}
 			return new expect($)
 		}
-	}
-	node(name, spinner, callbacks) {
-		const $ = this.case;
 		let result = !0;
-		for (let i in callbacks) {
-			const temp = i($)
+		let failed = [];
+		for (var i = 0; i < callbacks.length; i++) {
+			const temp = callbacks[i]($)
 			if (temp == !1) {
 				result = result == !0 || result == !1 ? false : result
+				failed.push(i + 1)
 			} else if (temp != !1 && temp != !0) {
 				result = temp
 			}
@@ -53,6 +97,7 @@ class EyeJS {
 		if (result == !1) {
 			spinner.fail();
 			this.data.failed += 1;
+			console.log(`\nTest ${failed} failed\n`)
 		}
 		else if (result == !0) {
 			spinner.succeed()
