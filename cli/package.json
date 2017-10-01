@@ -1,6 +1,6 @@
 {
   "name": "eye.js-cli",
-  "version": "0.0.0",
+  "version": "v0.0.1",
   "description": "The CLI of EyeJS",
   "main": "index.js",
   "scripts": {
