@@ -44,7 +44,6 @@ class EyeJS {
 		open.open("http://localhost:8080")
 	}
 	constructor() {
-		console.log();
 		this.data = {
 			"tested": 0,
 			"failed": 0

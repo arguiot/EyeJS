@@ -20,7 +20,6 @@
 // 	expect => expect($.math.add(0.2, 0.4)).Equal(0.6)
 // );
 // eye.test("test", "browser", "")
-const eye = require("./eye.js");
 
 eye.test("Test", "node",
 	$ => $(1+2+3+4+5).Equal((5**2+5)/2)

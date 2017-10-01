@@ -17,18 +17,15 @@ By the way, you can ⭐️ the project to support it 😊
 
 ## Getting Started
 
-To use EyeJS, you'll need to download EyeJS via NPM, and create a `test.js` or `eye.js` file.
+To use EyeJS, you'll need to download EyeJS via NPM, and create a `test.js` file (might require `sudo` on Mac).
 ```bash
 $ npm install eye.js
 ```
-
-## Initialize EyeJS
-
-At the beginning of your `test.js` or `eye.js` file, write this:
-```javascript
-const eye = require("eye.js");
+## Run EyeJS
+EyeJS comes with a CLI:
+```bash
+$ eye
 ```
-
 ## The full docs can be found [here](https://github.com/arguiot/EyeJS/wiki)
 
 ## Contributing

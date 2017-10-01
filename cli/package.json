@@ -25,6 +25,11 @@
   },
   "homepage": "https://github.com/arguiot/EyeJS#readme",
   "dependencies": {
-    "commander": "^2.11.0"
+    "commander": "^2.11.0",
+    "eye.js": "0.0.0",
+    "glob": "^7.1.2"
+  },
+  "bin": {
+    "eye": "./index.js"
   }
 }
