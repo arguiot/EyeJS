@@ -1,7 +1,7 @@
 <h1 align="center">EyeJS</h1>
-<!-- <p align="center">
+<p align="center">
   <img src="https://rawgit.com/arguiot/EyeJS/master/docs/img/logo.svg" width="256">
-<br/> -->
+<br/>
 A JavaScript testing framework for the real world
 <br/>
 By the way, you can ⭐️ the project to support it 😊
