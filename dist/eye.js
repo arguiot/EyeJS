@@ -39,7 +39,7 @@ class EyeJS {
 				res.writeHead(200, {'Content-Type': 'text/html'});
 				res.write(data)
 				res.end()
-			}
+			});
 		}).listen(8080); //the server object listens on port 8080
 		open.open("http://localhost:8080")
 	}

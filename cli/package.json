@@ -1,0 +1,30 @@
+{
+  "name": "eye.js-cli",
+  "version": "0.0.0",
+  "description": "The CLI of EyeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arguiot/EyeJS.git"
+  },
+  "keywords": [
+    "eye",
+    "test",
+    "framework",
+    "eye.js",
+    "DisplayJS",
+    "cli"
+  ],
+  "author": "Arthur Guiot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arguiot/EyeJS/issues"
+  },
+  "homepage": "https://github.com/arguiot/EyeJS#readme",
+  "dependencies": {
+    "commander": "^2.11.0"
+  }
+}
