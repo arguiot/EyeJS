@@ -7,7 +7,7 @@ if (process.argv.includes("-h")) {
 	process.exit(0);
 }
 
-const eye = require('../dist/eye');
+const eye = require('eye.js');
 const fs = require("fs");
 const glob = require('glob');
 function run(file) {
