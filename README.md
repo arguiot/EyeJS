@@ -1,6 +1,6 @@
 <h1 align="center">EyeJS</h1>
 <p align="center">
-  <img src="https://rawgit.com/arguiot/EyeJS/master/docs/img/logo.svg" width="256">
+  <img src="https://rawgit.com/arguiot/EyeJS/master/docs/img/EyeJS-logo.svg" width="256">
 <br/>
 A JavaScript testing framework for the real world
 <br/>
