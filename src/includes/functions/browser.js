@@ -6,6 +6,9 @@ browser(name, spinner, file) {
 			res.send(data.toString('utf8'));
 		});
 	})
+	const server = app.listen(3000, function () {
+		open.open("http://localhost:3000");
+	})
 	app.get('/post/', function (req, res) {
 		const result = req.query.result;
 		const failed = req.query.failed;
@@ -22,13 +25,11 @@ browser(name, spinner, file) {
 			spinner.warn()
 		}
 		res.send("sucess")
+		server.close();
 	});
 	app.get('/js/', (req, res) => {
 		fs.readFile("../client/index.js", (err, data) => {
 			res.send(data.toString('utf8'));
 		});
-	})
-	app.listen(3000, function () {
-		open.open("http://localhost:3000");
-	})
+	});
 }
