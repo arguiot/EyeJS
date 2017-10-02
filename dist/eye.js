@@ -6,44 +6,50 @@
 
 
 // Require all modules
-const ora = require('ora');
-const colors = require('colors');
-const http = require('http');
-const open = require('openurl');
-const fs = require('fs');
+const ora = require("ora");
+const colors = require("colors");
+const express = require("express");
+const open = require("openurl");
+const fs = require("fs");
 
 // Class EyeJS
 class EyeJS {
 	browser(name, spinner, file) {
-		//create a server object:
-		http.createServer((req, res) => {
-			const chunks = [];
-			request.on('data', chunk => chunks.push(chunk));
-			request.on('end', () => {
-				const data = JSON.parse(Buffer.concat(chunks));
-				const result = data.status;
-				const failed = data.failed;
-				if (result == !1) {
-					spinner.fail();
-					this.data.failed += 1;
-					console.log(`\nTest ${failed} failed\n`)
-				}
-				else if (result == !0) {
-					spinner.succeed()
-				}
-				else {
-					spinner.warn()
-				}
+		// use express
+		const app = express();
+		app.get("/", function (req, res) {
+			fs.readFile(file[0], (err, data) => {
+				res.send(data.toString("utf8"));
 			});
-			fs.readFile(file, (err, data) => {
-				res.writeHead(200, {'Content-Type': 'text/html'});
-				res.write(data)
-				res.end()
+		});
+		app.get("/post/", function (req, res) {
+			const result = req.query.result;
+			const failed = req.query.failed;
+			if (result == 0) {
+				spinner.fail();
+				// failed += 1;
+				console.log(`\nTest ${failed} failed\n`);
+				// console.log(this.data);
+			}
+			else if (result == 1) {
+				spinner.succeed();
+			}
+			else {
+				spinner.warn();
+			}
+			res.send("sucess");
+		});
+		app.get("/js/", (req, res) => {
+			fs.readFile("../client/index.js", (err, data) => {
+				res.send(data.toString("utf8"));
 			});
-		}).listen(8080); //the server object listens on port 8080
-		open.open("http://localhost:8080")
+		});
+		app.listen(3000, function () {
+			open.open("http://localhost:3000");
+		});
 	}
 	constructor() {
+		console.log();
 		this.data = {
 			"tested": 0,
 			"failed": 0
@@ -71,46 +77,46 @@ class EyeJS {
 		const $ = $ => {
 			class expect {
 				constructor(val) {
-					this.val = val
+					this.val = val;
 				}
 				Equal(val) {
-					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false
+					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false;
 				}
 				Match(val) {
-					return val.test(this.val) == true ? true : false
+					return val.test(this.val) == true ? true : false;
 				}
 			}
-			return new expect($)
-		}
+			return new expect($);
+		};
 		let result = !0;
 		let failed = [];
 		for (var i = 0; i < callbacks.length; i++) {
-			const temp = callbacks[i]($)
+			const temp = callbacks[i]($);
 			if (temp == !1) {
-				result = result == !0 || result == !1 ? false : result
-				failed.push(i + 1)
+				result = result == !0 || result == !1 ? false : result;
+				failed.push(i + 1);
 			} else if (temp != !1 && temp != !0) {
-				result = temp
+				result = temp;
 			}
 		}
 		if (result == !1) {
 			spinner.fail();
 			this.data.failed += 1;
-			console.log(`\nTest ${failed} failed\n`)
+			console.log(`\nTest ${failed} failed\n`);
 		}
 		else if (result == !0) {
-			spinner.succeed()
+			spinner.succeed();
 		}
 		else {
-			spinner.warn()
+			spinner.warn();
 		}
 	}
-	test(name, type="node") {
+	test(name, type) {
 		this.data.tested += 1;
 		const spinner = ora(name).start();
 		let callbacks = [];
 		for (var i = 0; i < arguments.length - 2; i++) {
-			callbacks.push(arguments[i + 2])
+			callbacks.push(arguments[i + 2]);
 		}
 		return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
 	}
@@ -120,11 +126,11 @@ if (typeof define === "function" && define.amd) {
 	define(() => new EyeJS);
 // CommonJS and Node.js module support.
 } else if (typeof exports !== "undefined") {
-		// Support Node.js specific `module.exports` (which can be a function)
+	// Support Node.js specific `module.exports` (which can be a function)
 	if (typeof module !== "undefined" && module.exports) {
 		exports = module.exports = new EyeJS;
 	}
-		// But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
+	// But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
 	exports.DisplayJS = new EyeJS;
 } else if (typeof global !== "undefined") {
 	global.DisplayJS = new EyeJS;

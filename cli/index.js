@@ -7,7 +7,7 @@ if (process.argv.includes("-h")) {
 	process.exit(0);
 }
 
-const eye = require('eye.js');
+const eye = require('../dist/eye.js');
 const fs = require("fs");
 const glob = require('glob');
 function run(file) {
@@ -24,6 +24,8 @@ function run(file) {
 }
 if (process.argv.length > 1 && /node/.test(process.argv[0]) != true) {
 	run(process.argv[1])
+} else if (process.argv.length > 2 && /node/.test(process.argv[0]) == true) {
+	run(process.argv[2])
 } else {
 	glob("**/*test.js", options, function (err, files) {
 		if (err != null) {

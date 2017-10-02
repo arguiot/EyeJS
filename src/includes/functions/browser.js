@@ -1,29 +1,34 @@
 browser(name, spinner, file) {
-	//create a server object:
-	http.createServer((req, res) => {
-		const chunks = [];
-		request.on('data', chunk => chunks.push(chunk));
-		request.on('end', () => {
-			const data = JSON.parse(Buffer.concat(chunks));
-			const result = data.status;
-			const failed = data.failed;
-			if (result == !1) {
-				spinner.fail();
-				this.data.failed += 1;
-				console.log(`\nTest ${failed} failed\n`)
-			}
-			else if (result == !0) {
-				spinner.succeed()
-			}
-			else {
-				spinner.warn()
-			}
+	// use express
+	const app = express();
+	app.get('/', function (req, res) {
+		fs.readFile(file[0], (err, data) => {
+			res.send(data.toString('utf8'));
 		});
-		fs.readFile(file, (err, data) => {
-			res.writeHead(200, {'Content-Type': 'text/html'});
-			res.write(data)
-			res.end()
+	})
+	app.get('/post/', function (req, res) {
+		const result = req.query.result;
+		const failed = req.query.failed;
+		if (result == 0) {
+			spinner.fail();
+			// failed += 1;
+			console.log(`\nTest ${failed} failed\n`)
+			// console.log(this.data);
+		}
+		else if (result == 1) {
+			spinner.succeed()
+		}
+		else {
+			spinner.warn()
+		}
+		res.send("sucess")
+	});
+	app.get('/js/', (req, res) => {
+		fs.readFile("../client/index.js", (err, data) => {
+			res.send(data.toString('utf8'));
 		});
-	}).listen(8080); //the server object listens on port 8080
-	open.open("http://localhost:8080")
+	})
+	app.listen(3000, function () {
+		open.open("http://localhost:3000");
+	})
 }

@@ -1,4 +1,4 @@
-test(name, type="node") {
+test(name, type) {
 	this.data.tested += 1;
 	const spinner = ora(name).start();
 	let callbacks = [];

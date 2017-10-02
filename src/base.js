@@ -8,7 +8,7 @@
 // Require all modules
 const ora = require('ora');
 const colors = require('colors');
-const http = require('http');
+const express = require('express');
 const open = require('openurl');
 const fs = require('fs');
 
