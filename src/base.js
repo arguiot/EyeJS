@@ -11,6 +11,7 @@ const colors = require('colors');
 const express = require('express');
 const open = require('openurl');
 const fs = require('fs');
+const path = require('path');
 
 // Class EyeJS
 class EyeJS {

@@ -11,7 +11,8 @@ constructor() {
 			console.log("Passed:".bold, this.data.tested);
 			console.log("Failed:".bold.red, this.data.failed);
 			const end = process.hrtime(this.time);
-			console.log("Time".bold, `${Math.round((end[0] * 1000) + (end[1] / 1000000))}ms`);
+			const time = Math.round((end[0] * 1000) + (end[1] / 1000000))
+			console.log("Time".bold, `${time > 1000 ? time / 1000 + "s" : time + "ms"}`);
 			console.group();
 			console.log("✔ EyeJS exited with no critical errors".green);
 			process.exit(0);

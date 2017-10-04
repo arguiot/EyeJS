@@ -38,6 +38,12 @@ class EyeJS {
 				Equal(val) {
 					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false
 				}
+				is(type) {
+					return typeof this.val == type ? true : false;
+				}
+				isTrueFor(callback) {
+					return callback(this.val);
+				}
 				Match(val) {
 					return val.test(this.val) == true ? true : false
 				}

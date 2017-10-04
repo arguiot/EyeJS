@@ -22,7 +22,9 @@ node(name, spinner, callbacks) {
 	if (result == !1) {
 		spinner.fail();
 		this.data.failed += 1;
-		console.log(`\nTest ${failed} failed\n`)
+		console.group();
+		console.log(`\nTest ${failed} failed\n`.red)
+		console.groupEnd();
 	}
 	else if (result == !0) {
 		spinner.succeed()

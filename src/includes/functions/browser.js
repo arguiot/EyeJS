@@ -2,7 +2,7 @@ browser(name, spinner, file) {
 	// use express
 	const app = express();
 	app.get('/', function (req, res) {
-		fs.readFile(file[0], (err, data) => {
+		fs.readFile(path.isAbsolute(file[0]) ? file[0] : process.cwd() + "/" + file[0], (err, data) => {
 			res.send(data.toString('utf8'));
 		});
 	})
@@ -28,7 +28,7 @@ browser(name, spinner, file) {
 		server.close();
 	});
 	app.get('/js/', (req, res) => {
-		fs.readFile("../client/index.js", (err, data) => {
+		fs.readFile(__dirname + "/../dist/client.js", (err, data) => {
 			res.send(data.toString('utf8'));
 		});
 	});

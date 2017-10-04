@@ -11,6 +11,7 @@ const colors = require('colors');
 const express = require('express');
 const open = require('openurl');
 const fs = require('fs');
+const path = require('path');
 
 // Class EyeJS
 class EyeJS {
@@ -18,7 +19,7 @@ class EyeJS {
 		// use express
 		const app = express();
 		app.get('/', function (req, res) {
-			fs.readFile(file[0], (err, data) => {
+			fs.readFile(path.isAbsolute(file[0]) ? file[0] : process.cwd() + "/" + file[0], (err, data) => {
 				res.send(data.toString('utf8'));
 			});
 		})
@@ -44,7 +45,7 @@ class EyeJS {
 			server.close();
 		});
 		app.get('/js/', (req, res) => {
-			fs.readFile("../client/index.js", (err, data) => {
+			fs.readFile(__dirname + "/../dist/client.js", (err, data) => {
 				res.send(data.toString('utf8'));
 			});
 		});
@@ -62,7 +63,8 @@ class EyeJS {
 				console.log("Passed:".bold, this.data.tested);
 				console.log("Failed:".bold.red, this.data.failed);
 				const end = process.hrtime(this.time);
-				console.log("Time".bold, `${Math.round((end[0] * 1000) + (end[1] / 1000000))}ms`);
+				const time = Math.round((end[0] * 1000) + (end[1] / 1000000))
+				console.log("Time".bold, `${time > 1000 ? time / 1000 + "s" : time + "ms"}`);
 				console.group();
 				console.log("✔ EyeJS exited with no critical errors".green);
 				process.exit(0);
@@ -82,6 +84,12 @@ class EyeJS {
 				}
 				Equal(val) {
 					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false
+				}
+				is(type) {
+					return typeof this.val == type ? true : false;
+				}
+				isTrueFor(callback) {
+					return callback(this.val);
 				}
 				Match(val) {
 					return val.test(this.val) == true ? true : false
@@ -103,7 +111,9 @@ class EyeJS {
 		if (result == !1) {
 			spinner.fail();
 			this.data.failed += 1;
-			console.log(`\nTest ${failed} failed\n`)
+			console.group();
+			console.log(`\nTest ${failed} failed\n`.red)
+			console.groupEnd();
 		}
 		else if (result == !0) {
 			spinner.succeed()

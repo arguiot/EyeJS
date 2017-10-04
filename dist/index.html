@@ -1,10 +1,10 @@
 <h1>Hello World!</h1>
 <script src="/js/" charset="utf-8"></script>
-<!-- <script src="https://unpkg.com/display.js" charset="utf-8"></script> -->
+<script src="https://unpkg.com/display.js" charset="utf-8"></script>
 <script type="text/javascript">
-// const djs = new DisplayJS(window);
+const djs = new DisplayJS(window);
 eye.test(
-	$ => $(true).Equal(true)
+	$ => $(djs.single("h1").innerHTML).Equal("Hello World!")
 );
 eye.done();
 </script>

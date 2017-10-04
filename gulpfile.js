@@ -10,7 +10,7 @@ gulp.task("src", () => {
 gulp.task("client", () => {
 	gulp.src("client/base.js")
 	.pipe(rigger())
-	.pipe(rename({basename: "index"}))
-    .pipe(gulp.dest("client"));
+	.pipe(rename({basename: "client"}))
+    .pipe(gulp.dest("dist"));
 })
 gulp.task("default", ["src", "client"])
