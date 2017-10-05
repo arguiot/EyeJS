@@ -1,4 +1,4 @@
-done() {
+checkout() {
 	this.data.result = this.data.failed == 0 ? 1 : 0;
 	this.data.result = this.data.warn == 0 ? this.data.result : 3;
 	const request = new XMLHttpRequest();

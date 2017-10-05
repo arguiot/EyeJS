@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>EyeJS - Website test</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div class="menu">
+		<a href="#" id="toggle">
+		<i class="fa fa-bars" aria-hidden="true"></i>
+	</a>
+		<ul class="hover menu-ul">
+			<li><a href="https://github.com/arguiot/EyeJS">Github</a></li>
+			<li><a href="https://github.com/arguiot/EyeJS/wiki">Docs</a></li>
+			<li><a href="#install">Install</a></li>
+		</ul>
+	</div>
+	<div class="logo">
+		<img src="https://cdn.rawgit.com/arguiot/EyeJS/master/docs/img/EyeJS-logo.svg" alt="Logo" class="logo-img">
+		<h1>EyeJS</h1>
+		<h2>A JavaScript testing framework for the real world</h2>
+	</div>
+	<article>
+		<section class="intro">
+			<h1>Introduction</h1>
+			<p>Hello, I'm <a href="https://twitter.com/arthur_guiot">Arthur Guiot</a>, I created <a href="https://display.js.org">DisplayJS</a> not that long ago, and I figured out that I couldn't find an easy to setup testing framework. So, I wanted to create my
+				own, and here it is. EyeJS is easy to setup, and has some unique features, such as the ability to test your project right in a browser, which make it adapted to real world test.</p>
+		</section>
+		<section id="install">
+			<h1>Installation</h1>
+			<p>EyeJS require <b>node v7.6.0</b> or higher for ES2015 and async function support. <br><br> You can quickly install a supported version of node with your favorite version manager:
+			</p>
+			<div class="code">
+				<script src="https://gist.github.com/arguiot/206d054925f472bd1fdb67c9acb01fc3.js"></script>
+			</div>
+		</section>
+		<section>
+			<h1>Concept</h1>
+			<p>EyeJS have two test modes: the <b>node</b> mode, which run tests in a simple node environement, as Jest or Mocha would do. <br>And, our unique feature, which is the <b>browser</b> mode. It will tell your browser to do the tests.</p>
+		</section>
+		<section>
+			<h1>Syntax</h1>
+			<p>EyeJS have a pretty straight forward syntax, which make it easy to use. Here is a demo:</p>
+			<div class="code">
+				<script src="https://gist.github.com/arguiot/84000d8834ddb15f9300bc99029856f6.js"></script>
+			</div>
+		</section>
+		<section>
+			<h1>Comparison</h1>
+			<h3>Speed</h3>
+			<p>Where other testing frameworks (such as Jest) are pretty slow, <b>EyeJS can do your tests under milliseconds</b></p>
+			<h3>Features</h3>
+			<p>EyeJS is made for the real world, so yes, other framework like Jest (yes, I'm comparing with Jest because it's the only one I know 😊), will have a richer API on the paper, <b>but can you run node based and broswer based tests using the same command with them?</b><br>EyeJS
+				is focusing on the essential, if you need more complex functions, no one will stop 🛑 you from going on GitHub, forking the project and add more functions 😊.</p>
+			<h3>Setup</h3>
+			<p>EyeJS, and other testing frameworks are easy to "setup". But, we all know that setup means <b>setup + learn</b>, that's why <b>EyeJS is easy to learn and to use.</b></p>
+		</section>
+		<section>
+			<h1>Conclusion</h1>
+			<p>EyeJS is designed for teams or hobbyist with ambition, it has some unique features that makes it more than a simple framework, it's your second pair of <b>eyes!</b></p>
+		</section>
+	</article>
+	<footer>
+		<div class="love">Made with ❤️ by Arthur Guiot</div>
+		<div class="links">
+			<ul>
+				<li><a href="https://github.com/arguiot"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+				<li><a href="https://twitter.com/arthur_guiot"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="https://codepen.io/arguiot"><i class="fa fa-codepen" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+		<div class="copyright">Copyright © 2017 Arthur Guiot <br> All Rights Reserved.</div>
+	</footer>
+	<script src='https://unpkg.com/display.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+
+	<script src="js/index.js"></script>
+
+</body>
+
+</html>
