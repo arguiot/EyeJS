@@ -12,6 +12,7 @@ const express = require('express');
 const open = require('openurl');
 const fs = require('fs');
 const path = require('path');
+const notifier = require('node-notifier');
 
 // Class EyeJS
 class EyeJS {
@@ -67,11 +68,21 @@ class EyeJS {
 				console.log("Time".bold, `${time > 1000 ? time / 1000 + "s" : time + "ms"}`);
 				console.group();
 				console.log("✔ EyeJS exited with no critical errors".green);
+				notifier.notify({
+					title: 'EyeJS',
+					message: '✔ EyeJS exited with no critical errors',
+					icon: path.join(__dirname, '../docs/img/EyeJS-logo.png'),
+				})
 				process.exit(0);
 			}
 			else {
 				console.log("\n");
 				console.log(`✖ Oups!, There is problem somewhere! Exited with ${code}`.red);
+				notifier.notify({
+					title: 'EyeJS - Error',
+					message: `✖ Oups!, There is problem somewhere! Exited with ${code}`,
+					icon: path.join(__dirname, '../docs/img/EyeJS-logo.png'),
+				})
 				process.exit(1);
 			}
 		});
@@ -87,6 +98,9 @@ class EyeJS {
 				}
 				is(type) {
 					return typeof this.val == type ? true : false;
+				}
+				isCloseTo(actual, precision=2) {
+					return Math.abs(this.val - actual) < Math.pow(10, -precision) / 2;
 				}
 				isTrueFor(callback) {
 					return callback(this.val);

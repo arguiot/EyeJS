@@ -33,17 +33,18 @@
   },
   "homepage": "https://github.com/arguiot/EyeJS#readme",
   "devDependencies": {
-    "babel-eslint": "^8.0.0",
-    "eslint": "^4.7.2",
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
     "gulp": "^3.9.1",
     "gulp-rigger": "^0.5.8"
   },
   "dependencies": {
     "colors": "^1.1.2",
     "express": "^4.16.1",
-    "eye.js-cli": "0.0.0",
     "openurl": "^1.1.1",
-    "ora": "^1.3.0"
+    "ora": "^1.3.0",
+    "glob": "^7.1.2",
+    "node-notifier": "^5.1.2"
   },
   "bin": {
     "eye": "./cli/index.js"

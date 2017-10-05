@@ -15,11 +15,21 @@ constructor() {
 			console.log("Time".bold, `${time > 1000 ? time / 1000 + "s" : time + "ms"}`);
 			console.group();
 			console.log("✔ EyeJS exited with no critical errors".green);
+			notifier.notify({
+				title: 'EyeJS',
+				message: '✔ EyeJS exited with no critical errors',
+				icon: path.join(__dirname, '../docs/img/EyeJS-logo.png'),
+			})
 			process.exit(0);
 		}
 		else {
 			console.log("\n");
 			console.log(`✖ Oups!, There is problem somewhere! Exited with ${code}`.red);
+			notifier.notify({
+				title: 'EyeJS - Error',
+				message: `✖ Oups!, There is problem somewhere! Exited with ${code}`,
+				icon: path.join(__dirname, '../docs/img/EyeJS-logo.png'),
+			})
 			process.exit(1);
 		}
 	});

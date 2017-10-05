@@ -6,10 +6,9 @@ if (process.argv.includes("-h")) {
 	console.log("EyeJS:\n $ eye [optional: file]");
 	process.exit(0);
 }
-
-const eye = require('../dist/eye.js');
 const fs = require("fs");
 const glob = require('glob');
+const eye = require('../dist/eye.js');
 function run(file) {
 	fs.readFile(process.cwd() + "/" + file, (err, data) => {
 		if (err != null) {

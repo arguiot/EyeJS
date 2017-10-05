@@ -28,5 +28,5 @@ eye.test("Test", "node",
 eye.test("Browser", "browser", "dist/index.html")
 
 eye.test("Test2", "node",
-	$ => $(true).Equal(false)
+	$ => !$(true).Equal(false)
 );
