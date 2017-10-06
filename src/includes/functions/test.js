@@ -5,5 +5,5 @@ test(name, type) {
 	for (var i = 0; i < arguments.length - 2; i++) {
 		callbacks.push(arguments[i + 2])
 	}
-	return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
+	type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
 }

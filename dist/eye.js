@@ -108,6 +108,14 @@ class EyeJS {
 				Match(val) {
 					return val.test(this.val) == true ? true : false
 				}
+				toRun() {
+					try {
+						this.val()
+					} catch (e) {
+						return false
+					}
+					return true
+				}
 			}
 			return new expect($)
 		}
@@ -143,7 +151,7 @@ class EyeJS {
 		for (var i = 0; i < arguments.length - 2; i++) {
 			callbacks.push(arguments[i + 2])
 		}
-		return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
+		type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
 	}
 }
 // Browserify / Node.js

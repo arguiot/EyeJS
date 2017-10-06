@@ -50,6 +50,14 @@ class EyeJS {
 				Match(val) {
 					return val.test(this.val) == true ? true : false
 				}
+				toRun() {
+					try {
+						this.val()
+					} catch (e) {
+						return false
+					}
+					return true
+				}
 			}
 			return new expect($)
 		}

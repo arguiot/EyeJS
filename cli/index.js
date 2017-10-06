@@ -26,7 +26,7 @@ if (process.argv.length > 1 && /node/.test(process.argv[0]) != true) {
 } else if (process.argv.length > 2 && /node/.test(process.argv[0]) == true) {
 	run(process.argv[2])
 } else {
-	glob(process.cwd() + "/" + "**/*test.js", options, function (err, files) {
+	glob("**/*test.js", options, function (err, files) {
 		if (err != null) {
 			console.log(`Problem with 'glob':\n ${err}`);
 			process.exit(1)
