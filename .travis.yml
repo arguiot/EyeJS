@@ -3,10 +3,10 @@ node_js:
   - "node"
 
 before_install:
-  - npm install -g npm@latest
+  - npm i -g npm@latest
 
 install:
-  - npm install
+  - npm i
 
 script:
   - npm run test
