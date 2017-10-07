@@ -17,9 +17,9 @@ By the way, you can ⭐️ the project to support it 😊
 
 ## Getting Started
 
-To use EyeJS, you'll need to download EyeJS via NPM, and create a `test.js` file (might require `sudo` on Mac).
+To use EyeJS, you'll need to download EyeJS via NPM, and create a `__test__` folder in your project folder, and add tests files in it. (NPM might require `sudo` on Mac).
 ```bash
-$ npm install eye.js
+$ npm install -g eye.js
 ```
 ## Run EyeJS
 EyeJS comes with a CLI:
