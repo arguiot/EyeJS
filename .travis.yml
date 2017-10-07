@@ -1,20 +1,15 @@
-language:
-  - objective-c
-
-env:
-  - NODE_VERSION="6.11.4"
-  - NODE_VERSION="8.6.0"
+language: node_js
+node_js:
+  - "7"
+  - "6.11.4"
+  - "8.6.0"
 
 before_install:
+  - npm install -g npm@latest
 
 install:
-  - rm -rf ~/.nvm
-  - git clone https://github.com/creationix/nvm.git ~/.nvm
-  - source ~/.nvm/nvm.sh
-  - nvm install $NODE_VERSION
-  - node --version
-  - npm i -g npm@latest
   - npm install
+
 script:
   - npm run test
 

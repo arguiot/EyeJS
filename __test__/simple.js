@@ -2,7 +2,7 @@ eye.test("Test", "node",
 	$ => $(1+2+3+4+5).Equal((5**2+5)/2)
 );
 
-eye.test("Browser", "browser", path.join(testFileDir, "index.html"))
+// eye.test("Browser", "browser", path.join(testFileDir, "index.html"))
 
 eye.test("Test2", "node",
 	$ => !$(true).Equal(false)
