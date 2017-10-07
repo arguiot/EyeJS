@@ -1,6 +1,8 @@
-language: node_js
+language:            node_js
 node_js:
   - "8"
+env:
+  - ENV=CI
 
 before_install:
   - npm install -g npm@latest
@@ -12,4 +14,4 @@ script:
   - npm run test
 
 notifications:
-  email: false
+  email:             false
