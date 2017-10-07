@@ -34,7 +34,7 @@ class EyeJS {
 				spinner.fail();
 				// failed += 1;
 				console.group();
-				console.log(`\nTest ${failed} failed\n`.red)
+				console.log(`\n${failed} test(s) failed\n`.red)
 				console.groupEnd();
 				// console.log(this.data);
 			}

@@ -74,7 +74,7 @@ class EyeJS {
 			}
 		}
 		if (result == !1) {
-			this.data.failed += 1;
+			this.data.failed += failed.length;
 			console.log(`\nTest ${failed} failed\n`)
 		}
 		else if (result == !0) {
