@@ -41,10 +41,10 @@
   "dependencies": {
     "colors": "^1.1.2",
     "express": "^4.16.1",
+    "globby": "^6.1.0",
+    "node-notifier": "^5.1.2",
     "openurl": "^1.1.1",
-    "ora": "^1.3.0",
-    "glob": "^7.1.2",
-    "node-notifier": "^5.1.2"
+    "ora": "^1.3.0"
   },
   "bin": {
     "eye": "./cli/index.js"

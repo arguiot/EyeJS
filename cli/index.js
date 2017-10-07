@@ -7,9 +7,22 @@ if (process.argv.includes("-h")) {
 	process.exit(0);
 }
 const fs = require("fs");
-const glob = require('glob');
+const globby = require('globby');
 const eye = require('../dist/eye.js');
+const path = require("path");
+
+let testFileDir = "";
+function rmFromArray(array, condition) {
+	const obj = [];
+	for (const i in array) {
+		if (condition(i) == !1) {
+			obj.push(array[i]);
+		}
+	}
+	return obj;
+}
 function run(file) {
+	testFileDir = path.dirname(process.cwd() + "/" + file)
 	fs.readFile(process.cwd() + "/" + file, (err, data) => {
 		if (err != null) {
 			console.log(`Problem with 'fs':\n ${err}`);
@@ -26,13 +39,12 @@ if (process.argv.length > 1 && /node/.test(process.argv[0]) != true) {
 } else if (process.argv.length > 2 && /node/.test(process.argv[0]) == true) {
 	run(process.argv[2])
 } else {
-	glob("**/*test.js", options, function (err, files) {
-		if (err != null) {
-			console.log(`Problem with 'glob':\n ${err}`);
-			process.exit(1)
-		} else {
-			for (let i of files) {
+	globby(["**/__test__/*.js", "!node_modules/**"]).then(files => {
+		for (let i of files) {
+			try {
 				run(i)
+			} catch(e) {
+				console.log(`Can't run ${i}: ${e}`.red)
 			}
 		}
 	})

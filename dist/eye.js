@@ -19,13 +19,13 @@ class EyeJS {
 	browser(name, spinner, file) {
 		// use express
 		const app = express();
+		const server = app.listen(3000, function () {
+			open.open("http://localhost:3000");
+		})
 		app.get('/', function (req, res) {
 			fs.readFile(path.isAbsolute(file[0]) ? file[0] : process.cwd() + "/" + file[0], (err, data) => {
 				res.send(data.toString('utf8'));
 			});
-		})
-		const server = app.listen(3000, function () {
-			open.open("http://localhost:3000");
 		})
 		app.get('/post/', function (req, res) {
 			const result = req.query.result;
@@ -33,7 +33,9 @@ class EyeJS {
 			if (result == 0) {
 				spinner.fail();
 				// failed += 1;
-				console.log(`\nTest ${failed} failed\n`)
+				console.group();
+				console.log(`\nTest ${failed} failed\n`.red)
+				console.groupEnd();
 				// console.log(this.data);
 			}
 			else if (result == 1) {
@@ -151,7 +153,7 @@ class EyeJS {
 		for (var i = 0; i < arguments.length - 2; i++) {
 			callbacks.push(arguments[i + 2])
 		}
-		type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
+		return type == "browser" ? this.browser(name, spinner, callbacks) : this.node(name, spinner, callbacks);
 	}
 }
 // Browserify / Node.js
