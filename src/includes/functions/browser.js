@@ -1,5 +1,5 @@
 browser(name, spinner, file) {
-	if (new RegExp("/ci/", "i").test(process.env.ENV)) {
+	if (process.env.ENV == "CI") {
 		spinner.warn();
 		console.group();
 		console.log(`\nCan't run browser tests on CI.\n`.red)
