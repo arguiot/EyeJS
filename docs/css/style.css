@@ -61,9 +61,7 @@ html, body {
 }
 
 .logo {
-  background: white;
-  position: absolute;
-  z-index: -20;
+  position: relative;
   top: 0%;
   width: 100vw;
   height: 100vh;
@@ -81,6 +79,9 @@ html, body {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.logo > * {
+	z-index: -20;
+}
 .logo > .logo-img {
   width: 200px;
 }
@@ -96,9 +97,33 @@ html, body {
   font-size: 1em;
   font-weight: thin;
 }
-
+.video {
+	font-size: 2em
+}
+.youtube {
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+.youtube > * {
+	width: 75vw;
+	height: 75vh;
+	z-index: 100;
+}
+.overlay {
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+}
 article {
-  margin-top: 100vh;
+  position: absolute;
+  top: 100vh;
+  width: 100vw;
 }
 
 h1 {
