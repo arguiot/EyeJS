@@ -8,10 +8,9 @@ eye.describe("Node tests", () => {
 	function sum(a, b) {
 		return a + b
 	}
-
+	eye.test("Browser", "browser", path.join(testFileDir, "index.html"))
 	eye.test("Sum", "node",
 		$ => $(sum(1, 2)).Equal(3),
 		$ => $(sum(0.2, 0.4)).isCloseTo(0.6, 1)
 	)
 })
-eye.test("Browser", "browser", path.join(testFileDir, "index.html"))
