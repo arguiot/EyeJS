@@ -12,7 +12,7 @@ test() {
 	let failed = [];
 	for (var i = 0; i < arguments.length; i++) {
 		const callback = arguments[i];
-		const temp = callback($)
+	 	const temp = callback($)
 		if (temp == !1) {
 			result = result == !0 || result == !1 ? false : result
 			failed.push(i + 1)

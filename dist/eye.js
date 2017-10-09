@@ -161,6 +161,9 @@ class EyeJS {
 					}
 					return true;
 				}
+				visual() {
+					return window.confirm("EyeJS - Is everything alright?");
+				}
 			}
 			return new expect($);
 		};
