@@ -39,7 +39,7 @@ if (process.argv.length > 1 && /node/.test(process.argv[0]) != true) {
 } else if (process.argv.length > 2 && /node/.test(process.argv[0]) == true) {
   run(process.argv[2]);
 } else {
-  globby(["**/__test__/*.js", "!node_modules/**"]).then(files => {
+  globby(["**/__test*__/*.js", "!node_modules/**"]).then(files => {
     for (let i of files) {
       try {
         run(i);
