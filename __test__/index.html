@@ -4,9 +4,8 @@
 <script type="text/javascript">
 const djs = new DisplayJS(window);
 eye.test(
-	$ => $(djs.single("h1").innerHTML).Equal("Hello Word!"),
-	$ => $(1+2).Equal(5),
-	$ => $().visual()
+	$ => $(djs.single("h1").innerHTML).Match(/Hello/),
+	$ => $(1+2).Equal(3)
 );
 eye.checkout();
 </script>
