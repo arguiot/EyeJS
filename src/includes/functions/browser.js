@@ -40,7 +40,7 @@ browser(name, spinner, file) {
 					resolve(fail)
 				});
 			});
-			app.use('/static', express.static(path.dirname(process.cwd() + "/" + file[0])));
+			app.use('/static', express.static(path.dirname(path.dirname(file[0]) + "/../")));
 			app.get('/eyejs/', (req, res) => {
 				fs.readFile(__dirname + "/../dist/client.js", (err, data) => {
 					res.send(data.toString('utf8'));
