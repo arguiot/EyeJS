@@ -1,5 +1,5 @@
 eye.describe("Node tests", () => {
-  eye.test("Test", "node", $ => $(1 + 2 + 3 + 4 + 5).Equal((5 ** 2 + 5) / 2));
+  eye.test("Test", "node", $ => $(1 + 2 + 3 + 4 + 5).Equal((5*5 + 5) / 2));
   eye.test("Test2", "node", $ => !$(true).Equal(false));
   function sum(a, b) {
     return a + b;

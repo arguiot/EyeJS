@@ -5,6 +5,11 @@ browser(name, spinner, file) {
 			console.group();
 			console.log(`\nCan't run browser tests on CI.\n`.red)
 			console.groupEnd();
+		} else if (!/v8/.test(process.version)) {
+			spinner.warn();
+			console.group();
+			console.log(`\nCan't run browser tests on NodeJS ${process.version}.\n`.red)
+			console.groupEnd();
 		} else {
 			// use express
 			const app = express();

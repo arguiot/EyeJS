@@ -12,7 +12,9 @@ const open = require("openurl");
 const fs = require("fs");
 const path = require("path");
 const notifier = require("node-notifier");
-
+// polyfill
+console.group = console.group || console.log;
+console.groupEnd = console.groupEnd || console.log;
 // Class EyeJS
 class EyeJS {
 	browser(name, spinner, file) {
@@ -21,6 +23,13 @@ class EyeJS {
 				spinner.warn();
 				console.group();
 				console.log("\nCan't run browser tests on CI.\n".red);
+				console.groupEnd();
+			} else if (!/v8/.test(process.version)) {
+				spinner.warn();
+				console.group();
+				console.log(
+					`\nCan't run browser tests on NodeJS ${process.version}.\n`.red
+				);
 				console.groupEnd();
 			} else {
 				// use express
@@ -203,19 +212,15 @@ class EyeJS {
 			spinner.warn();
 		}
 	}
-	async test(name, type) {
+	test(name, type, ...callbacks) {
 		this.data.tested += 1;
 		const spinner = ora(name).start();
-		let callbacks = [];
-		for (var i = 0; i < arguments.length - 2; i++) {
-			callbacks.push(arguments[i + 2]);
-		}
 		if (type == "browser") {
-			await this.browser(name, spinner, callbacks).then(
+			this.browser(name, spinner, callbacks).then(
 				fail => (this.data.failed += fail)
 			);
 		} else {
-			await this.node(name, spinner, callbacks);
+			this.node(name, spinner, callbacks);
 		}
 	}
 }
