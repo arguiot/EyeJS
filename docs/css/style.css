@@ -62,6 +62,7 @@ html, body {
 
 .logo {
   position: fixed;
+  width: calc(100% - 80px);
   height: 100vh;
   padding: 40px;
   text-align: center;
