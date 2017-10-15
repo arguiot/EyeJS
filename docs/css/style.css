@@ -63,8 +63,10 @@ html, body {
 .logo {
   position: relative;
   top: 0%;
-  width: 100vw;
+  /*width: 100vw;*/
   height: 100vh;
+  padding: 40px;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
