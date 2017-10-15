@@ -8,7 +8,7 @@ function parallax() {
     $.css("footer", "display", "block");
   } else {
     $.css(".logo", {
-      top: $.scrollTop() / 1.5 + "px",
+      transform: "translateY( -" + $.scrollTop() / 2.5 + "px)",
       display: ""
     });
     $.css("footer", "display", "none");
