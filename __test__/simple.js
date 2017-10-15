@@ -12,3 +12,7 @@ eye.describe("Node tests", () => {
     $ => $(sum(0.2, 0.4)).isCloseTo(0.6, 1)
   );
 });
+eye.test("isClose", "node",
+    $ => $(0.2 + 0.4).isCloseTo(0.6, 1),
+    $ => $(10).isCloseTo(11, -1)
+)

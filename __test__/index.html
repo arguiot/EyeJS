@@ -5,7 +5,8 @@
 const djs = new DisplayJS(window);
 eye.test(
 	$ => $(djs.single("h1").innerHTML).Match(/Hello/),
-	$ => $(1+2).Equal(3)
+	$ => $(1+2).Equal(3),
+	$ => $(document.querySelector("h1")).visual()
 );
 eye.checkout();
 </script>
