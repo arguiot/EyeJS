@@ -14,7 +14,7 @@ if (process.argv.includes("-h")) {
   const eye = require("../dist/eye.js");
   const path = require("path");
 
-  let testFileDir = "";
+  let __testDir = "";
   function rmFromArray(array, condition) {
     const obj = [];
     for (const i in array) {
@@ -25,7 +25,7 @@ if (process.argv.includes("-h")) {
     return obj;
   }
   function run(file) {
-    testFileDir = path.dirname(process.cwd() + "/" + file);
+    __testDir = path.dirname(process.cwd() + "/" + file) + "/";
     fs.readFile(process.cwd() + "/" + file, (err, data) => {
       if (err != null) {
         console.log(`Problem with 'fs':\n ${err}`);

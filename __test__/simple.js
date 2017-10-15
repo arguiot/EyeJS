@@ -4,7 +4,7 @@ eye.describe("Node tests", () => {
   function sum(a, b) {
     return a + b;
   }
-  eye.test("Browser", "browser", path.join(testFileDir, "index.html"));
+  eye.test("Browser", "browser", __testDir + "index.html");
   eye.test(
     "Sum",
     "node",
