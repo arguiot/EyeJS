@@ -147,6 +147,9 @@ class EyeJS {
   			Equal(val) {
   				return JSON.stringify(val) == JSON.stringify(this.val) ? true : false
   			}
+  			haveProperty(name) {
+  				return this.val.hasOwnProperty(name) ? true : false;
+  			}
   			is(type) {
   				return typeof this.val == type ? true : false;
   			}
@@ -156,7 +159,9 @@ class EyeJS {
   			isTrueFor(callback) {
   				return callback(this.val);
   			}
-  			length
+  			length(val) {
+  				return this.val.length == val ? true : false
+  			}
   			Match(val) {
   				return val.test(this.val) == true ? true : false
   			}
