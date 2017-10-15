@@ -61,9 +61,7 @@ html, body {
 }
 
 .logo {
-  position: relative;
-  top: 0%;
-  /*width: 100vw;*/
+  position: fixed;
   height: 100vh;
   padding: 40px;
   text-align: center;
