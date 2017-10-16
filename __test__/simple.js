@@ -16,3 +16,8 @@ eye.test("isClose", "node",
     $ => $(0.2 + 0.4).isCloseTo(0.6, 1),
     $ => $(10).isCloseTo(11, -1)
 )
+eye.test("property", "node",
+	$ => $({
+    	a: "Hello"
+    }).hasProperty("a")
+)

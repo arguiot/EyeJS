@@ -163,7 +163,7 @@ class EyeJS {
 				Equal(val) {
 					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false;
 				}
-				haveProperty(name) {
+				hasProperty(name) {
 					return this.val.hasOwnProperty(name) ? true : false;
 				}
 				includes(val) {
