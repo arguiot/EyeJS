@@ -1,6 +1,6 @@
 browser(name, spinner, file) {
 	return new Promise((resolve, reject) => {
-		if (process.env.ENV == "CI") {
+		if (process.env.ENV == "CI" || process.env.CI == true) {
 			spinner.warn();
 			console.group();
 			console.log(`\nCan't run browser tests on CI.\n`.red)
