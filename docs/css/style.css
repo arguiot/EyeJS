@@ -207,25 +207,36 @@ footer > .links > ul > li > a:hover {
   color: #333333;
 }
 
-@media (max-device-width: 667px) {
+@media (max-width: 800px) {
+  article {
+	  overflow-x: hidden;
+  }
   p {
-    font-size: 2.5em;
+    font-size: 1em;
   }
 
   h1 {
-    font-size: 4em;
+    font-size: 1.5em;
   }
 
   h3 {
-    font-size: 3em;
+    font-size: 1.25em;
   }
 
   footer {
-    font-size: 2em;
+    font-size: 1em;
   }
-
+  section > p {
+	margin: 0 auto;
+	margin-top: 10px;
+	text-align: left;
+	width: 50vw;
+  }
+  section > .code {
+	  width: 50vw
+  }
   .menu {
-    font-size: 4em;
+    font-size: 1.5em;
   }
 
   .logo-img {
@@ -236,13 +247,16 @@ footer > .links > ul > li > a:hover {
     position: relative;
     top: -5vh;
     font-family: Helvetica;
-    font-size: 3em;
+    font-size: 1.5em;
   }
 
   .logo > h2 {
     position: relative;
     top: -7vh;
-    font-size: 2em;
+    font-size: 1.25em;
     font-weight: thin;
+  }
+  .twitter {
+	  display: inline-block;
   }
 }
