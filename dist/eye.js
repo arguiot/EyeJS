@@ -150,6 +150,9 @@ class EyeJS {
   			haveProperty(name) {
   				return this.val.hasOwnProperty(name) ? true : false;
   			}
+  			includes(val) {
+  				return this.val.includes(val) ? true : false;
+  			}
   			is(type) {
   				return typeof this.val == type ? true : false;
   			}
