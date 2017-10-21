@@ -14,6 +14,8 @@ function parallax() {
     $.css("footer", "display", "none");
   }
 }
-$.on(".video", "click", () => {
-  $.toggleClass(".youtube", "overlay");
-});
+$.all(".videoOverlay", el => {
+	$.on(el, "click", () => {
+	  $.toggleClass(".youtube", "overlay");
+	});
+})
