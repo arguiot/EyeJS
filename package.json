@@ -36,6 +36,7 @@
   "homepage": "https://github.com/arguiot/EyeJS#readme",
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "buffer-shims": "^1.0.0",
     "eslint": "^4.9.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",

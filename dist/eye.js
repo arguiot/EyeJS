@@ -160,29 +160,88 @@ class EyeJS {
 				constructor(val) {
 					this.val = val;
 				}
-				Equal(val) {
-					return JSON.stringify(val) == JSON.stringify(this.val) ? true : false;
+				Equal(val, not) {
+					if (
+						(JSON.stringify(val) == JSON.stringify(this.val) && not != false) ||
+            (not == false && JSON.stringify(val) != JSON.stringify(this.val))
+					) {
+						return true;
+					} else {
+						return `${this.val} isn't equal to ${val}`;
+					}
 				}
-				hasProperty(name) {
-					return this.val.hasOwnProperty(name) ? true : false;
+				hasProperty(name, not) {
+					if (
+						(this.val.hasOwnProperty(name) && not != false) ||
+            (not == false && !this.val.hasOwnProperty(name))
+					) {
+						return true;
+					} else {
+						return `${this.val} doesn't have '${name}' as property`;
+					}
 				}
-				includes(val) {
-					return this.val.includes(val) ? true : false;
+				includes(val, not) {
+					if (
+						(this.val.includes(val) && not != false) ||
+            (not == false && !this.val.includes(val))
+					) {
+						return true;
+					} else {
+						return `${this.val} doesn't includes ${val}`;
+					}
 				}
-				is(type) {
-					return typeof this.val == type ? true : false;
+				is(type, not) {
+					if (
+						(typeof this.val == type && not != false) ||
+            (not == false && typeof this.val != type)
+					) {
+						return true;
+					} else {
+						return `${this.val} isn't a ${type}`;
+					}
 				}
-				isCloseTo(actual, precision = 2) {
-					return Math.abs(this.val - actual) < Math.pow(10, -precision) / 2;
+				isCloseTo(actual, precision = 2, not) {
+					if (
+						(Math.abs(this.val - actual) < Math.pow(10, -precision) / 2 &&
+              not != false) ||
+            (not == false &&
+              !(Math.abs(this.val - actual) < Math.pow(10, -precision) / 2))
+					) {
+						return true;
+					} else {
+						return `${this
+							.val} isn't close to ${actual}, with a precision of ${precision}`;
+					}
 				}
-				isTrueFor(callback) {
-					return callback(this.val);
+				isTrueFor(callback, not) {
+					if (
+						(callback(this.val) && not != false) ||
+            (not == false && !callback(this.val))
+					) {
+						return true;
+					} else {
+						return `${this.val} isn't true for ${callback}`;
+					}
 				}
-				length(val) {
-					return this.val.length == val ? true : false;
+				length(val, not) {
+					if (
+						(this.val.length == val && not != false) ||
+            (not == false && this.val.length != val)
+					) {
+						return true;
+					} else {
+						return `${this.val} doesn't have for length ${val}`;
+					}
 				}
-				Match(val) {
-					return val.test(this.val) == true ? true : false;
+				Match(val, not) {
+					if (
+						(val.test(this.val) && not != false) ||
+            (not == false && !val.test(this.val))
+					) {
+						return true;
+					} else {
+						return `${this.val} doesn't match ${val}`;
+					}
 				}
 				toRun() {
 					try {
@@ -201,10 +260,12 @@ class EyeJS {
 		};
 		let result = !0;
 		let failed = [];
+		let tothrow = [];
 		for (var i = 0; i < callbacks.length; i++) {
 			const temp = callbacks[i]($);
-			if (temp == !1) {
-				result = result == !0 || result == !1 ? false : result;
+			if (temp == !1 || typeof temp == "string") {
+				result = false;
+				tothrow.push(temp);
 				failed.push(i + 1);
 			} else if (temp != !1 && temp != !0) {
 				result = temp;
@@ -214,7 +275,9 @@ class EyeJS {
 			spinner.fail();
 			this.data.failed += 1;
 			console.group();
-			console.log(`\nTest ${failed} failed\n`.red);
+			for (i = 0; i < failed.length; i++) {
+				console.log(`\nTest ${failed[i]} failed: ${tothrow[i]}\n`.red);
+			}
 			console.groupEnd();
 		} else if (result == !0) {
 			spinner.succeed();

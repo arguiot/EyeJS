@@ -10,10 +10,12 @@ node(name, spinner, callbacks) {
 	}
 	let result = !0;
 	let failed = [];
+	let tothrow = [];
 	for (var i = 0; i < callbacks.length; i++) {
 		const temp = callbacks[i]($)
-		if (temp == !1) {
-			result = result == !0 || result == !1 ? false : result
+		if (temp == !1 || typeof temp == 'string') {
+			result = false;
+			tothrow.push(temp)
 			failed.push(i + 1)
 		} else if (temp != !1 && temp != !0) {
 			result = temp
@@ -23,7 +25,9 @@ node(name, spinner, callbacks) {
 		spinner.fail();
 		this.data.failed += 1;
 		console.group();
-		console.log(`\nTest ${failed} failed\n`.red)
+		for (i = 0; i < failed.length; i++) {
+			console.log(`\nTest ${failed[i]} failed: ${tothrow[i]}\n`.red)
+		}
 		console.groupEnd();
 	}
 	else if (result == !0) {
