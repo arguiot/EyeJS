@@ -1,4 +1,4 @@
-visual() {
+visual(not) {
 	this.val instanceof Element ? this.val.scrollIntoView() : null
-	return window.confirm("EyeJS - Is everything alright?")
+	return not == false ? !window.confirm("EyeJS - Is everything alright?") : window.confirm("EyeJS - Is everything alright?") 
 }

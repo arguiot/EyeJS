@@ -1,8 +1,8 @@
-toRun() {
+toRun(not) {
 	try {
 		this.val()
 	} catch (e) {
-		return false
+		return not == false ? true : false
 	}
-	return true
+	return not == false ? false : true
 }
