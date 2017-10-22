@@ -70,6 +70,20 @@ class EyeJS {
 						return `${this.val} isn't close to ${actual}, with a precision of ${precision}`
 					}
 				}
+				isLarger(val, not) {
+					if((this.val > val && not != false) || (not == false && !(this.val > val))) {
+						return true;
+					} else {
+						return `${this.val} isn't larger than ${actual}`
+					}
+				}
+				isSmaller(val, not) {
+					if((this.val < val && not != false) || (not == false && !(this.val < val))) {
+						return true;
+					} else {
+						return `${this.val} isn't smaller than ${actual}`
+					}
+				}
 				isTrueFor(callback, not) {
 					if((callback(this.val) && not != false) || (not == false && !callback(this.val))) {
 						return true;
