@@ -1,4 +1,4 @@
-node(name, spinner, callbacks) {
+node(name, spinner, ...callbacks) {
 	const $ = $ => {
 		class expect {
 			constructor(val) {

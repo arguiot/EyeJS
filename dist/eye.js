@@ -138,7 +138,7 @@ class EyeJS {
   	const time = Math.round((end[0] * 1000) + (end[1] / 1000000))
   	console.log(`\nDone in ${time > 1000 ? time / 1000 + "s" : time + "ms"}\n`.bold)
   }
-  node(name, spinner, callbacks) {
+  node(name, spinner, ...callbacks) {
   	const $ = $ => {
   		class expect {
   			constructor(val) {
