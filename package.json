@@ -1,6 +1,6 @@
 {
   "name": "eye.js",
-  "version": "v0.1.0",
+  "version": "v0.2.0",
   "description": "A JavaScript testing framework for the real world",
   "main": "dist/eye.js",
   "scripts": {
