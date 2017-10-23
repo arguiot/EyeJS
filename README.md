@@ -19,7 +19,7 @@ By the way, you can ⭐️ the project to support it 😊
 
 ## Getting Started
 
-To use EyeJS, you'll need to download EyeJS via NPM, and create a `__test__` folder in your project folder, and add tests files in it. (NPM might require `sudo` on Mac).
+To use EyeJS, you'll need to download EyeJS via NPM, and create a `__test__` folder in your project folder, and put tests files in it. (NPM might require `sudo` on Mac).
 ```bash
 $ npm install -g eye.js
 ```
@@ -59,7 +59,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 - **Arthur Guiot** - *Initial work* - [@arguiot](https://github.com/arguiot)
 
-See also the list of [contributors](https://github.com/arguiot/EyeJS/contributors) who participated in this project. If you don't code but you have great ideas, don't hesitate to write your idea in the issue part. If your idea is accepted, I will add you to this list 😊.
+Also look at the list of [contributors](https://github.com/arguiot/EyeJS/contributors) who participated in this project. If you don't code but you have great ideas, don't hesitate to write your idea in the issue part. If your idea is accepted, I will add you to this list 😊.
 
 ## License
 
