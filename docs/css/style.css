@@ -125,7 +125,7 @@ article {
   position: absolute;
   top: 100vh;
   width: 100vw;
-  /*margin-bottom: 400px;*/
+  margin-bottom: 400px;
 }
 
 h1 {
@@ -169,7 +169,6 @@ section > .code {
 article {
   background: white;
   background-clip: padding-box;
-  border-bottom: 400px solid rgba(0, 0, 0, 0);
 }
 .twitter {
 	margin: 0 auto;
