@@ -8,7 +8,7 @@ if (typeof define === "function" && define.amd) {
     exports = module.exports = new EyeJS();
   }
   // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
-  exports.DisplayJS = new EyeJS();
+  exports.EyeJS = new EyeJS();
 } else if (typeof global !== "undefined") {
-  global.DisplayJS = new EyeJS();
+  global.EyeJS = new EyeJS();
 }
