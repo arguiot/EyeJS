@@ -109,9 +109,6 @@ html, body {
   cursor: pointer;
   transition: .1s ease-in-out;
 }
-.videoOverlay:hover {
-  opacity: .8;
-}
 .youtube {
 	position: fixed;
 	z-index: 10;
