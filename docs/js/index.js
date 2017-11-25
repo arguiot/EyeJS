@@ -9,6 +9,7 @@ function parallax() {
   } else {
     $.css(".logo", {
       transform: "translateY( -" + $.scrollTop() / 2.5 + "px)",
+      opacity: 1 - $.scrollTop() / 800,
       display: ""
     });
     $.css("footer", "display", "none");

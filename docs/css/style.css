@@ -8,6 +8,7 @@ html, body {
   color: #333333;
   overflow-x: hidden;
   padding-bottom: 200px;
+  line-height: 1.7;
 }
 
 .menu {
@@ -23,6 +24,7 @@ html, body {
 }
 .menu:hover ul {
   opacity: 1;
+  visibility: visible;
 }
 .menu > a {
   color: #333333;
@@ -37,6 +39,7 @@ html, body {
 }
 .menu > ul {
   opacity: 0;
+  visibility: hidden;
   text-align: left;
   position: relative;
   top: 5px;
@@ -47,6 +50,7 @@ html, body {
   padding: 25px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 1px 3px 0 #eee;
+  transition: .1s ease-in-out;
 }
 .menu > ul > li {
   padding: 5px;
@@ -61,11 +65,13 @@ html, body {
 }
 
 .logo {
+  will-change: transform;
   position: fixed;
   width: calc(100% - 80px);
   height: 100vh;
   padding: 40px;
   text-align: center;
+  transition: height 999999s; /* fix mobild address bar issues */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,10 +102,12 @@ html, body {
   position: relative;
   top: -10vh;
   font-size: 1em;
-  font-weight: thin;
+  font-weight: lighter;
 }
 .videoOverlay {
-	font-size: 2em
+  font-size: 2em;
+  cursor: pointer;
+  transition: .1s ease-in-out;
 }
 .youtube {
 	position: fixed;
@@ -125,11 +133,17 @@ article {
   position: absolute;
   top: 100vh;
   width: 100vw;
-  margin-bottom: 400px;
+  height: auto;
+  background-clip: padding-box;
+  pointer-events: none;
 }
-
 h1 {
   font-size: 2em;
+  letter-spacing: 2px;
+}
+
+h3 {
+  letter-spacing: 1.4px;
 }
 
 a {
@@ -137,38 +151,48 @@ a {
 }
 
 section {
+  margin: 0 auto;
   padding: 150px 100px;
   text-align: center;
+  background: white;
   box-shadow: inset 0 1px 0 0 white;
   border-top: 1px solid #eee;
+  pointer-events: all;
 }
 section.intro {
   background: #fdfdfd;
 }
+section.space {
+  padding: 0;
+  height: 400px;
+  background: transparent;
+  pointer-events: none;
+}
 section > h1 {
   margin: 0 auto;
   text-align: left;
-  width: 750px;
+  max-width: 750px;
+}
+section > h3 {
+  margin: 0 auto;
+  margin-top: 2em;
+  text-align: left;
+  max-width: 750px;
 }
 section > p {
   margin: 0 auto;
   margin-top: 10px;
   text-align: left;
-  width: 750px;
+  max-width: 750px;
 }
 section > .code {
   margin: 0 auto;
   padding: 20px;
-  width: 500px;
+  max-width: 500px;
 }
 
 .gist-meta {
   display: none;
-}
-
-article {
-  background: white;
-  background-clip: padding-box;
 }
 .twitter {
 	margin: 0 auto;
@@ -181,17 +205,19 @@ article {
 	margin-top: 10px;
 }
 footer {
+  box-sizing: border-box;
   display: none;
   color: rgba(10, 11, 26, 0.6);
   text-align: center;
+  margin: auto;
   padding: 40px;
   position: fixed;
   z-index: -100;
-  bottom: 0px;
-  width: calc(100vw - 80px);
+  bottom: 0;
+  width: 100vw;
 }
 footer > .links > ul {
-  margin-left: -40px;
+  padding: 0;
 }
 footer > .links > ul > li {
   font-size: 2em;
@@ -225,14 +251,11 @@ footer > .links > ul > li > a:hover {
   footer {
     font-size: 1em;
   }
-  section > p {
-	margin: 0 auto;
-	margin-top: 10px;
-	text-align: left;
-	width: 50vw;
+  section {
+    padding: 2.4em 1.2em;
   }
   section > .code {
-	  width: 50vw
+    padding: 20px 0;
   }
   .menu {
     font-size: 1.5em;
@@ -253,7 +276,7 @@ footer > .links > ul > li > a:hover {
     position: relative;
     top: -7vh;
     font-size: 1.25em;
-    font-weight: thin;
+    font-weight: lighter;
   }
   .twitter {
 	  display: inline-block;
