@@ -5,7 +5,7 @@ browser(name, spinner, file) {
 			console.group();
 			console.log(`\nCan't run browser tests on CI.\n`.red)
 			console.groupEnd();
-		} else if (!/v8/.test(process.version)) {
+		} else if (process.versions['node'].split(".")[0] > 8) {
 			spinner.warn();
 			console.group();
 			console.log(`\nCan't run browser tests on NodeJS ${process.version}.\n`.red)
@@ -13,16 +13,16 @@ browser(name, spinner, file) {
 		} else {
 			// use express
 			const app = express();
-			const server = app.listen(3000, function () {
+			const server = app.listen(3000, () => {
 				open.open("http://localhost:3000");
 			})
-			app.get('/', function (req, res) {
-				fs.readFile(path.isAbsolute(file[0]) ? file[0] : process.cwd() + "/" + file[0], (err, data) => {
+			app.get('/', (req, res) => {
+				fs.readFile(path.isAbsolute(file[0]) ? file[0] : `${process.cwd()}/${file[0]}`, (err, data) => {
 					res.send(data.toString('utf8'));
 				});
 			})
 			let fail = 0;
-			app.get('/post/', function (req, res) {
+			app.get('/post/', (req, res) => {
 				const result = req.query.result;
 				const failed = req.query.failed;
 				if (result == 0) {
@@ -45,9 +45,9 @@ browser(name, spinner, file) {
 					resolve(fail)
 				});
 			});
-			app.use('/static', express.static(path.dirname(path.dirname(file[0]) + "/../")));
+			app.use('/static', express.static(path.dirname(`${path.dirname(file[0])}/../`)));
 			app.get('/eyejs/', (req, res) => {
-				fs.readFile(__dirname + "/../dist/client.js", (err, data) => {
+				fs.readFile(`${__dirname}/../dist/client.js`, (err, data) => {
 					res.send(data.toString('utf8'));
 				});
 			});

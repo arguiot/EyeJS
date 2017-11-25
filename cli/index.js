@@ -1,12 +1,13 @@
 #!/usr/bin/env node
+
 "use strict";
 const options = process.argv;
 const fs = require("fs");
 
-if (process.argv.includes("-h")) {
+if ("-h" in process.argv) {
   console.log("EyeJS:\n $ eye [optional: file]");
   process.exit(0);
-} else if (process.argv.includes("-v")) {
+} else if ("-v" in process.argv) {
   const pjson = require("../package.json");
   console.log(`EyeJS ${pjson.version}`);
 } else {
