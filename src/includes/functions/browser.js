@@ -5,7 +5,7 @@ browser(name, spinner, file) {
 			console.group();
 			console.log(`\nCan't run browser tests on CI.\n`.red)
 			console.groupEnd();
-		} else if (process.versions['node'].split(".")[0] > 8) {
+		} else if (parseInt(process.version.split("v")[1].split(".")[0]) < 8) {
 			spinner.warn();
 			console.group();
 			console.log(`\nCan't run browser tests on NodeJS ${process.version}.\n`.red)
