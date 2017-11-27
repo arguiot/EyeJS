@@ -4,10 +4,10 @@
 const options = process.argv;
 const fs = require("fs");
 
-if ("-h" in process.argv) {
+if (process.argv.includes("-h")) {
   console.log("EyeJS:\n $ eye [optional: file]");
   process.exit(0);
-} else if ("-v" in process.argv) {
+} else if (process.argv.includes("-v")) {
   const pjson = require("../package.json");
   console.log(`EyeJS ${pjson.version}`);
 } else {
