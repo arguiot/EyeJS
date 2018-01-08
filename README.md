@@ -49,6 +49,11 @@ Add the built with EyeJS badge to your `README.md`
 
 Feel free to send me an email at [arguiot@gmail.com](mailto:arguiot@gmail.com), and I might add your site to an examples section I'm currently working on.
 
+## Examples of projects using EyeJS
+- [DisplayJS](https://display.js.org)
+- [Glottologist](https://glottologist.js.org)
+- [CrypTools Org](https://cryptools.github.io)
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/arguiot/EyeJS/tags).
