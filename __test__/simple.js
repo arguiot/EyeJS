@@ -27,5 +27,5 @@ eye.test("Performances", "node",
 		for (var i = 0; i < 1000; i++) {
 			a += i
 		}
-	}).perf(1) // shouldn't run in more than 1 ms
+	}).perf(10) // shouldn't run in more than 1 ms
 )
