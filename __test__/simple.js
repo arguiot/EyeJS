@@ -21,3 +21,11 @@ eye.test("property", "node",
     	a: "Hello"
     }).hasProperty("a")
 )
+eye.test("Performances", "node",
+	$ => $(() => {
+		let a = 1
+		for (var i = 0; i < 1000; i++) {
+			a += i
+		}
+	}).perf(1) // shouldn't run in more than 1 ms
+)
