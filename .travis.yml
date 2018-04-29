@@ -2,6 +2,7 @@ os:
   - osx
   - linux
   - windows
+sudo: required
 language:            node_js
 node_js:
   - "node"
@@ -15,7 +16,7 @@ before_install:
   - npm install -g npm@latest
 
 install:
-  - npm install
+  - sudo npm install --unsafe-perm=true
 
 script:
   - npm run test
