@@ -4,7 +4,6 @@ eye.describe("Node tests", () => {
   function sum(a, b) {
     return a + b;
   }
-  eye.test("Browser", "browser", __testDir + "index.html");
   eye.test(
     "Sum",
     "node",
@@ -29,3 +28,4 @@ eye.test("Performances", "node",
 		}
 	}).perf(10) // shouldn't run in more than 1 ms
 )
+eye.test("Browser", "browser", __testDir + "index.html");

@@ -93,8 +93,9 @@ class EyeJS {
           ) {
             return true;
           } else {
-            return `${this
-              .val} isn't close to ${actual}, with a precision of ${precision}`;
+            return `${
+              this.val
+            } isn't close to ${actual}, with a precision of ${precision}`;
           }
         }
         isLarger(val, not) {
@@ -197,7 +198,6 @@ class EyeJS {
       }
     }
     if (result == !1) {
-      spinner.fail();
       this.data.failed += failed.length;
       for (i = 0; i < failed.length; i++) {
         console.log(`\nTest ${failed[i]} failed: ${tothrow[i]}\n`.red);
