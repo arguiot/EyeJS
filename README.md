@@ -4,7 +4,7 @@
 <br/>
 A JavaScript testing framework for the real world
 <br/>
-By the way, you can ⭐️ the project to support it 😊
+  <i>By the way, you can ⭐️ the project to support it 😊</i>
 
 <div align="center">
   
