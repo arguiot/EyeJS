@@ -41,7 +41,7 @@
     "flow-bin": "^0.96.0",
     "gulp": "^4.0.0",
     "gulp-flowtype": "^1.0.0",
-    "gulp-react": "^3.1.0",
+    "gulp-react": "^4.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-rigger": "^0.5.8",
     "prettier": "1.16.4"
