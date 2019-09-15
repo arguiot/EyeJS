@@ -1,7 +1,9 @@
 isSmaller(val, not) {
-	if((this.val < val && not != false) || (not == false && !(this.val < val))) {
-		return true;
-	} else {
-		return `${this.val} isn't smaller than ${val}`
-	}
+	return new Promise(function(resolve, reject) {
+		if((this.val < val && not != false) || (not == false && !(this.val < val))) {
+			resolve(true)
+		} else {
+			resolve(`${this.val} isn't smaller than ${val}`)
+		}
+	});
 }

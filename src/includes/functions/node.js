@@ -12,14 +12,17 @@ node(name, spinner, callbacks) {
 	let failed = [];
 	let tothrow = [];
 	for (var i = 0; i < callbacks.length; i++) {
-		const temp = callbacks[i]($)
-		if (temp == !1 || typeof temp == 'string') {
-			result = false;
-			tothrow.push(temp)
-			failed.push(i + 1)
-		} else if (temp != !1 && temp != !0) {
-			result = temp
-		}
+		const r = callbacks[i]($)
+		r.then(temp => {
+			if (temp == !1 || typeof temp == 'string') {
+				result = false;
+				tothrow.push(temp)
+				failed.push(i + 1)
+			} else if (temp != !1 && temp != !0) {
+				result = temp
+			}
+		})
+
 	}
 	if (result == !1) {
 		spinner.fail();

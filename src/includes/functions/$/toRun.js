@@ -1,8 +1,10 @@
 toRun(not) {
-	try {
-		this.val()
-	} catch (e) {
-		return not == false ? true : false
-	}
-	return not == false ? false : true
+	return new Promise(function(resolve, reject) {
+		try {
+			this.val()
+		} catch (e) {
+			resolve(not == false ? true : false)
+		}
+		resolve(not == false ? false : true)
+	});
 }

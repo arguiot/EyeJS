@@ -1,7 +1,9 @@
 Match(val, not) {
-	if((val.test(this.val) && not != false) || (not == false && !val.test(this.val))) {
-		return true;
-	} else {
-		return `${this.val} doesn't match ${val}`
-	}
+	return new Promise(function(resolve, reject) {
+		if((val.test(this.val) && not != false) || (not == false && !val.test(this.val))) {
+			resolve(true);
+		} else {
+			resolve(`${this.val} doesn't match ${val}`)
+		}
+	});
 }

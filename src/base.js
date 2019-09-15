@@ -12,6 +12,7 @@ const open = require("openurl");
 const fs = require("fs");
 const path = require("path");
 const notifier = require("node-notifier");
+const { get } = require("http")
 // polyfill
 //= includes/other/polyfill.js
 // Class EyeJS

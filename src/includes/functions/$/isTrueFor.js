@@ -1,7 +1,9 @@
 isTrueFor(callback, not) {
-	if((callback(this.val) && not != false) || (not == false && !callback(this.val))) {
-		return true;
-	} else {
-		return `${this.val} isn't true for ${callback}`
-	}
+	return new Promise(function(resolve, reject) {
+		if((callback(this.val) && not != false) || (not == false && !callback(this.val))) {
+			resolve(true)
+		} else {
+			resolve(`${this.val} isn't true for ${callback}`)
+		}
+	});
 }

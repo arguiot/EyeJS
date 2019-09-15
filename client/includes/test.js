@@ -13,14 +13,15 @@ test() {
 	let tothrow = [];
 	for (var i = 0; i < arguments.length; i++) {
 		const callback = arguments[i];
-		const temp = callback($)
-		if (temp == !1 || typeof temp == 'string') {
-			result = false;
-			tothrow.push(temp)
-			failed.push(i + 1)
-		} else if (temp != !1 && temp != !0) {
-			result = temp
-		}
+		callback($).then(temp => {
+			if (temp == !1 || typeof temp == 'string') {
+				result = false;
+				tothrow.push(temp)
+				failed.push(i + 1)
+			} else if (temp != !1 && temp != !0) {
+				result = temp
+			}
+		})
 	}
 	if (result == !1) {
 		this.data.failed += failed.length;
