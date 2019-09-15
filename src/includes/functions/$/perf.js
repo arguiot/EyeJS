@@ -1,5 +1,5 @@
 perf(ms, not) {
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		try {
 			const start = process.hrtime()
 			for (var i = 0; i < 15; i++) {

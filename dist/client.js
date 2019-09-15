@@ -45,140 +45,188 @@ class EyeJS {
           this.val = val;
         }
         Equal(val, not) {
-          if (
-            (JSON.stringify(val) == JSON.stringify(this.val) && not != false) ||
-            (not == false && JSON.stringify(val) != JSON.stringify(this.val))
-          ) {
-            return true;
-          } else {
-            return `${this.val} isn't equal to ${val}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (JSON.stringify(val) == JSON.stringify(this.val) &&
+                not != false) ||
+              (not == false && JSON.stringify(val) != JSON.stringify(this.val))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} isn't equal to ${val}`);
+            }
+          });
+        }
+        fetch(callback) {
+          const fetch = url =>
+            new Promise((resolve, reject) => {
+              get(url, res => {
+                let data = "";
+                res.on("end", () => resolve(data));
+                res.on("data", buf => (data += buf.toString()));
+              }).on("error", e => reject(e));
+            });
+          return new Promise((resolve, reject) => {
+            fetch(this.val).then(data => {
+              resolve(callback(data));
+            });
+          });
         }
         hasProperty(name, not) {
-          if (
-            (this.val.hasOwnProperty(name) && not != false) ||
-            (not == false && !this.val.hasOwnProperty(name))
-          ) {
-            return true;
-          } else {
-            return `${this.val} doesn't have '${name}' as property`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (this.val.hasOwnProperty(name) && not != false) ||
+              (not == false && !this.val.hasOwnProperty(name))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} doesn't have '${name}' as property`);
+            }
+          });
         }
         includes(val, not) {
-          if (
-            (this.val.includes(val) && not != false) ||
-            (not == false && !this.val.includes(val))
-          ) {
-            return true;
-          } else {
-            return `${this.val} doesn't includes ${val}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (this.val.includes(val) && not != false) ||
+              (not == false && !this.val.includes(val))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} doesn't includes ${val}`);
+            }
+          });
         }
         is(type, not) {
-          if (
-            (typeof this.val == type && not != false) ||
-            (not == false && typeof this.val != type)
-          ) {
-            return true;
-          } else {
-            return `${this.val} isn't a ${type}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (typeof this.val == type && not != false) ||
+              (not == false && typeof this.val != type)
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} isn't a ${type}`);
+            }
+          });
         }
         isCloseTo(actual, precision = 2, not) {
-          if (
-            (Math.abs(this.val - actual) < Math.pow(10, -precision) / 2 &&
-              not != false) ||
-            (not == false &&
-              !(Math.abs(this.val - actual) < Math.pow(10, -precision) / 2))
-          ) {
-            return true;
-          } else {
-            return `${
-              this.val
-            } isn't close to ${actual}, with a precision of ${precision}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (Math.abs(this.val - actual) < Math.pow(10, -precision) / 2 &&
+                not != false) ||
+              (not == false &&
+                !(Math.abs(this.val - actual) < Math.pow(10, -precision) / 2))
+            ) {
+              resolve(true);
+            } else {
+              resolve(
+                `${
+                  this.val
+                } isn't close to ${actual}, with a precision of ${precision}`
+              );
+            }
+          });
         }
         isLarger(val, not) {
-          if (
-            (this.val > val && not != false) ||
-            (not == false && !(this.val > val))
-          ) {
-            return true;
-          } else {
-            return `${this.val} isn't larger than ${val}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (this.val > val && not != false) ||
+              (not == false && !(this.val > val))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} isn't larger than ${val}`);
+            }
+          });
         }
         isSmaller(val, not) {
-          if (
-            (this.val < val && not != false) ||
-            (not == false && !(this.val < val))
-          ) {
-            return true;
-          } else {
-            return `${this.val} isn't smaller than ${val}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (this.val < val && not != false) ||
+              (not == false && !(this.val < val))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} isn't smaller than ${val}`);
+            }
+          });
         }
         isTrueFor(callback, not) {
-          if (
-            (callback(this.val) && not != false) ||
-            (not == false && !callback(this.val))
-          ) {
-            return true;
-          } else {
-            return `${this.val} isn't true for ${callback}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (callback(this.val) && not != false) ||
+              (not == false && !callback(this.val))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} isn't true for ${callback}`);
+            }
+          });
         }
         length(val, not) {
-          if (
-            (this.val.length == val && not != false) ||
-            (not == false && this.val.length != val)
-          ) {
-            return true;
-          } else {
-            return `${this.val} doesn't have for length ${val}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (this.val.length == val && not != false) ||
+              (not == false && this.val.length != val)
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} doesn't have for length ${val}`);
+            }
+          });
         }
         Match(val, not) {
-          if (
-            (val.test(this.val) && not != false) ||
-            (not == false && !val.test(this.val))
-          ) {
-            return true;
-          } else {
-            return `${this.val} doesn't match ${val}`;
-          }
+          return new Promise((resolve, reject) => {
+            if (
+              (val.test(this.val) && not != false) ||
+              (not == false && !val.test(this.val))
+            ) {
+              resolve(true);
+            } else {
+              resolve(`${this.val} doesn't match ${val}`);
+            }
+          });
         }
         perf(ms, not) {
-          try {
-            const start = process.hrtime();
-            for (var i = 0; i < 15; i++) {
-              this.val();
+          return new Promise((resolve, reject) => {
+            try {
+              const start = process.hrtime();
+              for (var i = 0; i < 15; i++) {
+                this.val();
+              }
+              const end = process.hrtime(start);
+              const time = Math.round(end[0] * 1000 + end[1] / 1000000);
+              const average = time / 15;
+              if (ms < average) {
+                resolve(not == true ? false : true);
+              } else {
+                resolve(
+                  `Your function runs in approximately ${average}ms, which is superior to ${ms}ms`
+                );
+              }
+            } catch (e) {
+              resolve(not == false ? true : false);
             }
-            const end = process.hrtime(start);
-            const time = Math.round(end[0] * 1000 + end[1] / 1000000);
-            const average = time / 15;
-            if (ms > average) {
-              return not == true ? false : true;
-            } else {
-              return `Your function runs in approximately ${average}ms, which is superior to ${ms}ms`;
-            }
-          } catch (e) {
-            return not == false ? true : false;
-          }
+          });
         }
         toRun(not) {
-          try {
-            this.val();
-          } catch (e) {
-            return not == false ? true : false;
-          }
-          return not == false ? false : true;
+          return new Promise((resolve, reject) => {
+            try {
+              this.val();
+            } catch (e) {
+              resolve(not == false ? true : false);
+            }
+            resolve(not == false ? false : true);
+          });
         }
         visual(not) {
-          this.val instanceof Element ? this.val.scrollIntoView() : null;
-          return not == false
-            ? !window.confirm("EyeJS - Is everything alright?")
-            : window.confirm("EyeJS - Is everything alright?");
+          return new Promise((resolve, reject) => {
+            this.val instanceof Element ? this.val.scrollIntoView() : null;
+            resolve(
+              not == false
+                ? !window.confirm("EyeJS - Is everything alright?")
+                : window.confirm("EyeJS - Is everything alright?")
+            );
+          });
         }
       }
       return new expect($);
@@ -188,14 +236,15 @@ class EyeJS {
     let tothrow = [];
     for (var i = 0; i < arguments.length; i++) {
       const callback = arguments[i];
-      const temp = callback($);
-      if (temp == !1 || typeof temp == "string") {
-        result = false;
-        tothrow.push(temp);
-        failed.push(i + 1);
-      } else if (temp != !1 && temp != !0) {
-        result = temp;
-      }
+      callback($).then(temp => {
+        if (temp == !1 || typeof temp == "string") {
+          result = false;
+          tothrow.push(temp);
+          failed.push(i + 1);
+        } else if (temp != !1 && temp != !0) {
+          result = temp;
+        }
+      });
     }
     if (result == !1) {
       this.data.failed += failed.length;

@@ -7,7 +7,7 @@ fetch(callback) {
 			})
 			.on('error', e => reject(e));
 	})
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		fetch(this.val).then(data => {
 			resolve(callback(data))
 		})

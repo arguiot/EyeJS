@@ -1,5 +1,5 @@
 length(val, not) {
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		if((this.val.length == val && not != false) || (not == false && this.val.length != val)) {
 			resolve(true)
 		} else {

@@ -1,5 +1,5 @@
 Equal(val, not) {
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		if((JSON.stringify(val) == JSON.stringify(this.val) && not != false) || (not == false && JSON.stringify(val) != JSON.stringify(this.val))) {
 			resolve(true)
 		} else {
