@@ -4,6 +4,7 @@ constructor() {
 		"tested": 0,
 		"failed": 0
 	};
+	this.CI = false
 	this.exit = 0;
 	this.time = process.hrtime();
 	process.on("exit", (code) => {

@@ -7,6 +7,8 @@ try {
 
   if (process.argv.includes("-h")) {
     console.log("EyeJS:\n $ eye [optional: file]");
+    console.log("-v : Version of EyeJS");
+    console.log("-ci : Disable browser based tests (Continuous integration)");
     process.exit(0);
   } else if (process.argv.includes("-v")) {
     const pjson = require("../package.json");
@@ -17,6 +19,10 @@ try {
     const path = require("path");
 
     let __testDir = "";
+
+    if (process.argv.includes("-ci")) {
+      eye.CI = true;
+    }
 
     function rmFromArray(array, condition) {
       const obj = [];

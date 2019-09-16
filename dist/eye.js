@@ -20,7 +20,11 @@ console.groupEnd = console.groupEnd || console.log;
 class EyeJS {
 	browser(name, spinner, file) {
 		return new Promise((resolve, reject) => {
-			if (process.env.ENV == "CI" || process.env.CI == true) {
+			if (
+				process.env.ENV == "CI" ||
+        process.env.CI == true ||
+        this.CI === true
+			) {
 				spinner.warn();
 				console.group();
 				console.log("\nCan't run browser tests on CI.\n".red);
@@ -92,6 +96,7 @@ class EyeJS {
 			tested: 0,
 			failed: 0
 		};
+		this.CI = false;
 		this.exit = 0;
 		this.time = process.hrtime();
 		process.on("exit", code => {
