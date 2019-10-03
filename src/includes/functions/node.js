@@ -1,4 +1,4 @@
-node(name, spinner, callbacks) {
+async node(name, spinner, callbacks) {
 	const $ = $ => {
 		class expect {
 			constructor(val) {
@@ -13,15 +13,14 @@ node(name, spinner, callbacks) {
 	let tothrow = [];
 	for (var i = 0; i < callbacks.length; i++) {
 		const r = callbacks[i]($)
-		r.then(temp => {
-			if (temp == !1 || typeof temp == 'string') {
-				result = false;
-				tothrow.push(temp)
-				failed.push(i + 1)
-			} else if (temp != !1 && temp != !0) {
-				result = temp
-			}
-		})
+		const temp = await r
+		if (temp == !1 || typeof temp == 'string') {
+			result = false;
+			tothrow.push(temp)
+			failed.push(i + 1)
+		} else if (temp != !1 && temp != !0) {
+			result = temp
+		}
 
 	}
 	if (result == !1) {
@@ -32,11 +31,9 @@ node(name, spinner, callbacks) {
 			console.log(`\nTest ${failed[i]} failed: ${tothrow[i]}\n`.red)
 		}
 		console.groupEnd();
-	}
-	else if (result == !0) {
+	} else if (result == !0) {
 		spinner.succeed()
-	}
-	else {
+	} else {
 		spinner.warn()
 	}
 }

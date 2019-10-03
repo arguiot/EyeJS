@@ -38,7 +38,7 @@ class EyeJS {
     };
     request.send();
   }
-  test() {
+  async test() {
     const $ = $ => {
       class expect {
         constructor(val) {
@@ -196,7 +196,7 @@ class EyeJS {
               const end = process.hrtime(start);
               const time = Math.round(end[0] * 1000 + end[1] / 1000000);
               const average = time / 15;
-              if (ms < average) {
+              if (ms > average) {
                 resolve(not == true ? false : true);
               } else {
                 resolve(
@@ -234,17 +234,17 @@ class EyeJS {
     let result = !0;
     let failed = [];
     let tothrow = [];
+
     for (var i = 0; i < arguments.length; i++) {
       const callback = arguments[i];
-      callback($).then(temp => {
-        if (temp == !1 || typeof temp == "string") {
-          result = false;
-          tothrow.push(temp);
-          failed.push(i + 1);
-        } else if (temp != !1 && temp != !0) {
-          result = temp;
-        }
-      });
+      const temp = await callback($);
+      if (temp == !1 || typeof temp == "string") {
+        result = false;
+        tothrow.push(temp);
+        failed.push(i + 1);
+      } else if (temp != !1 && temp != !0) {
+        result = temp;
+      }
     }
     if (result == !1) {
       this.data.failed += failed.length;
