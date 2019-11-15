@@ -17,4 +17,6 @@ function client() {
     .pipe(rename({ basename: "client" }))
     .pipe(gulp.dest("dist"));
 }
+exports.src = src
+exports.client = client
 exports.default = gulp.parallel(src, client)
