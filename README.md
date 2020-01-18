@@ -10,7 +10,7 @@ A JavaScript testing framework for the real world
   <i>By the way, you can ⭐️ the project to support it 😊</i>
 
 <div align="center">
-  
+
 [![GitHub release](https://img.shields.io/github/release/arguiot/EyeJS.svg)](https://github.com/arguiot/EyeJS/releases)
 [![Build Status](https://travis-ci.org/arguiot/EyeJS.svg?branch=master)](https://travis-ci.org/arguiot/EyeJS)
 [![Github All Releases](https://img.shields.io/github/downloads/arguiot/EyeJS/total.svg)](https://github.com/arguiot/EyeJS/)
