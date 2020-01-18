@@ -13,6 +13,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hankandre",
+      "name": "Hank Andre",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/14790223?v=4",
+      "profile": "https://hankandre.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
