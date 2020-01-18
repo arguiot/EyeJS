@@ -1,6 +1,6 @@
 <h1 align="center">EyeJS</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <img src="https://rawgit.com/arguiot/EyeJS/master/docs/img/EyeJS-logo.svg" width="256">
@@ -83,6 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://arguiot.com"><img src="https://avatars1.githubusercontent.com/u/18022260?v=4" width="100px;" alt=""/><br /><sub><b>Arthur Guiot</b></sub></a><br /><a href="https://github.com/arguiot/EyeJS/commits?author=arguiot" title="Code">💻</a></td>
+    <td align="center"><a href="https://hankandre.com"><img src="https://avatars1.githubusercontent.com/u/14790223?v=4" width="100px;" alt=""/><br /><sub><b>Hank Andre</b></sub></a><br /><a href="#content-hankandre" title="Content">🖋</a></td>
   </tr>
 </table>
 
