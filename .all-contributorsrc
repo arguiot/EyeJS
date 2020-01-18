@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "arguiot",
+      "name": "Arthur Guiot",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/18022260?v=4",
+      "profile": "https://arguiot.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "EyeJS",
+  "projectOwner": "arguiot",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
