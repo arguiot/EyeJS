@@ -37,7 +37,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "buffer-shims": "^1.0.0",
-    "eslint": "^4.14.0",
+    "eslint": "^5.16.0",
     "flow-bin": "^0.96.0",
     "gulp": "^4.0.0",
     "gulp-flowtype": "^1.0.0",
