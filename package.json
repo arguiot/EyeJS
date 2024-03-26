@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "globby": "^9.1.0",
     "node-notifier": "^5.4.3",
     "openurl": "^1.1.1",
